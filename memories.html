@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Our Memories</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         :root {
             --primary: #ff6b8b;
-            --primary-light: #ff9ebb;
-            --primary-dark: #e55a74;
         }
         
         body {
@@ -27,9 +26,9 @@
             min-height: 100vh;
             overflow: hidden;
             position: relative;
+            touch-action: pan-y;
         }
         
-        /* Fullscreen image */
         .fullscreen-image {
             position: fixed;
             top: 0;
@@ -49,62 +48,59 @@
             object-position: center;
         }
         
-        /* Minimal overlay with caption */
         .image-overlay {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 0;
             width: 100%;
             text-align: center;
             z-index: 2;
             color: white;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .image-caption {
             font-family: 'Dancing Script', cursive;
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: white;
+            margin-bottom: 8px;
         }
         
         .anniversary-text {
-            font-size: 18px;
+            font-size: 16px;
             opacity: 0.9;
         }
         
-        /* Floating back button */
         .floating-back-button {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             z-index: 3;
             background: rgba(255, 107, 139, 0.9);
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 44px;
+            font-size: 14px;
         }
         
         .floating-back-button:hover {
             background: rgba(255, 107, 139, 1);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
         
-        /* Floating hearts container */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -118,7 +114,7 @@
         .heart {
             position: absolute;
             color: rgba(255, 107, 139, 0.7);
-            font-size: 24px;
+            font-size: 20px;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
             animation-name: floatUp;
@@ -135,7 +131,6 @@
             }
         }
         
-        /* Dim overlay for better text readability */
         .dim-overlay {
             position: fixed;
             top: 0;
@@ -172,7 +167,6 @@
     <div class="floating-hearts" id="heartsContainer"></div>
     
     <script>
-        // Navigation function
         function goBackToGifts() {
             document.body.style.opacity = '0.7';
             document.body.style.transition = 'opacity 0.3s';
@@ -181,24 +175,21 @@
             }, 300);
         }
         
-        // Create floating hearts
         function createFloatingHearts() {
             const container = document.getElementById('heartsContainer');
             if (!container) return;
             
-            // Create initial hearts
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
                     createHeart(container);
-                }, i * 150);
+                }, i * 200);
             }
             
-            // Continuous hearts
             setInterval(() => {
                 if (document.hasFocus()) {
                     createHeart(container);
                 }
-            }, 1000);
+            }, 800);
         }
         
         function createHeart(container) {
@@ -206,13 +197,13 @@
             heart.innerHTML = '❤️';
             heart.classList.add('heart');
             
-            const size = Math.random() * 30 + 20;
+            const size = Math.random() * 20 + 15;
             heart.style.fontSize = `${size}px`;
             heart.style.left = `${Math.random() * 100}vw`;
             
-            const duration = Math.random() * 6 + 4;
+            const duration = Math.random() * 4 + 3;
             heart.style.animation = `floatUp ${duration}s linear forwards`;
-            heart.style.opacity = '0.7';
+            heart.style.opacity = '0.6';
             
             container.appendChild(heart);
             
@@ -223,25 +214,5 @@
             }, duration * 1000);
         }
         
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             createFloatingHearts();
-            
-            // Fade in page
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-            
-            // Escape key to go back
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    goBackToGifts();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
