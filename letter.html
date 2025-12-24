@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* New Letter Styling */
+        .letter-page {
+            background: #faf5f0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(255, 215, 235, 0.1) 0%, transparent 30%);
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            background: #fffaf5;
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f8e9e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floral Border */
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px dashed #f8d7e3;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* Corner Flowers */
+        .corner-flower {
+            position: absolute;
+            font-size: 32px;
+            color: #ff9ebb;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .corner-flower.tl { top: 25px; left: 25px; }
+        .corner-flower.tr { top: 25px; right: 25px; transform: rotate(90deg); }
+        .corner-flower.bl { bottom: 25px; left: 25px; transform: rotate(-90deg); }
+        .corner-flower.br { bottom: 25px; right: 25px; transform: rotate(180deg); }
+
+        /* Letter Header */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 25px;
+        }
+
+        .letter-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff9ebb, transparent);
+        }
+
+        .letter-main-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 48px;
+            color: #d48fa6;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .letter-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #b88a9e;
+            opacity: 0.8;
+        }
+
+        /* Letter Body */
+        .letter-content-wrapper {
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .letter-greeting {
+            font-family: 'Crimson Text', serif;
+            font-size: 28px;
+            color: #d48fa6;
+            margin-bottom: 30px;
+            font-weight: 600;
+            padding-left: 20px;
+        }
+
+        .letter-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #5a4a4a;
+            margin-bottom: 30px;
+            text-align: justify;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter-text::first-letter {
+            font-size: 32px;
+            color: #d48fa6;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+
+        /* Heart Separator */
+        .heart-separator {
+            text-align: center;
+            margin: 40px 0;
+            color: #ff9ebb;
+            font-size: 24px;
+            opacity: 0.6;
+        }
+
+        /* Signature */
+        .letter-signature {
+            margin-top: 60px;
+            text-align: right;
+            position: relative;
+            padding-right: 40px;
+        }
+
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            color: #d48fa6;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        .signature-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            color: #b88a9e;
+            font-style: italic;
+        }
+
+        /* Date */
+        .letter-date {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-family: 'Crimson Text', serif;
+            font-size: 16px;
+            color: #b88a9e;
+            font-style: italic;
+        }
+        /* Music Player Styling */
+        .letter-music-player {
+            background: #fff9f5;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            border: 1px solid #f8e9e0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .player-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            color: #d48fa6;
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .player-title i {
+            color: #ff9ebb;
+        }
+
+        /* Navigation Buttons */
+        .letter-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #f8e9e0;
+        }
+
+        /* Floral Decorations */
+        .floral-decoration {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 100px;
+            color: #d48fa6;
+            z-index: 0;
+        }
+
+        .floral-decoration.left { left: 20px; top: 150px; transform: rotate(-15deg); }
+        .floral-decoration.right { right: 20px; bottom: 150px; transform: rotate(15deg); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+
+            .letter-main-title {
+                font-size: 36px;
+            }
+
+            .letter-subtitle {
+                font-size: 22px;
+            }
+
+            .letter-text {
+                font-size: 18px;
+                padding-left: 15px;
+            }
+
+            .floral-decoration {
+                font-size: 60px;
+                opacity: 0.08;
+            }
+        }
+    </style>
+</head>
+<body class="letter-page">
+    <div class="letter-container">
+        <!-- Corner Flowers -->
+        <div class="corner-flower tl">🌸</div>
+        <div class="corner-flower tr">🌸</div>
+        <div class="corner-flower bl">🌸</div>
+        <div class="corner-flower br">🌸</div>
+
+        <!-- Floral Decorations -->
+        <div class="floral-decoration left">🌺</div>
+        <div class="floral-decoration right">🌹</div>
+
+        <!-- Letter Date -->
+        <div class="letter-date">Today and Forever</div>
+
+        <!-- Letter Header -->
+        <div class="letter-header">
+            <h1 class="letter-main-title">Appreciation Letter</h1>
+            <p class="letter-subtitle">To my dearest love</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="letter-content-wrapper">
+            <p class="letter-greeting">Hi love,</p>
+
+            <div class="letter-text">
+                I created this to show my appreciation, and I know that these past few days and weeks we hadn't been communicating well, but still hoping that you can comeback to me.
+            </div>
+
+            <div class="letter-text">
+                Thank you for always making me smile, and always seeing my efforts (right?), even the smallest effort and thank you so much mahal ko for making my day better. Hindi ko man napaparamdam but thank you.
+            </div>
+
+            <div class="heart-separator">
+                ❤️ ❤️ ❤️
+            </div>
+
+            <div class="letter-text">
+                I am so incredibly proud of you. Ang lupit-lupit mo, alam mo ba 'yan? I'm not just proud of what you accomplish, but of who you are. Ang tibay mo, 'yung pagiging matatag mo kahit nahihirapan ka. I see you trying, fighting, and growing every single day. At talagang hinahangaan kita.
+            </div>
+
+            <div class="letter-text">
+                And please, always remember this: you never have to carry your burdens alone. Kapag nabigat na ang mundo, nandito ako. I am here to hold you, to listen, to be your safe space. Sandalan mo lang 'ko. Handa akong dumaan sa lahat kasama mo.
+            </div>
+
+            <div class="letter-text">
+                I love you my Ame.
+            </div>
+
+            <!-- Music Player -->
+            <div class="letter-music-player">
+                <div class="player-title">
+                    <i class="fas fa-music"></i> THIS SONG REMINDS ME OF YOU
+                </div>
+                <div class="player-container">
+                    <div class="song-info">
+                        <div class="song-title" style="font-family: 'Montserrat', sans-serif; color: #d48fa6; font-size: 18px; margin-bottom: 5px;">Pasilyo - Sunkissed Lola</div>
+                        <div class="artist" style="font-family: 'Crimson Text', serif; color: #b88a9e; font-style: italic;">Our Song</div>
+                    </div>
+                    <div class="player-controls" style="margin-top: 15px;">
+                        <button class="player-btn" onclick="toggleMusic()" style="background: #ff9ebb; color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;">
+                            <i class="fas fa-play" id="playIcon"></i>
+                        </button>
+                        <span style="margin-left: 15px; font-family: 'Montserrat', sans-serif; color: #b88a9e; font-size: 14px;">Background Music</span>
+                    </div>
+                    
+                    <!-- YouTube Player Button -->
+                    <button class="yt-button" onclick="openYouTube()" style="margin-top: 15px; background: transparent; border: 1px solid #ff9ebb; color: #d48fa6; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                        <i class="fab fa-youtube"></i> Listen to Pasilyo on YouTube
+                    </button>
+                </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="letter-signature">
+                <p class="signature-text">Sincerely yours,</p>
+                <p class="signature-name">The love of your life</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="letter-navigation">
+            <button class="nav-button back-button" onclick="goToSurprise()" style="background: transparent; border: 1px solid #d48fa6; color: #d48fa6; padding: 10px 25px; border-radius: 25px; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                <i class="fas fa-arrow-left"></i> Back to Gifts
+            </button>
+            <button class="nav-button home-button" onclick="goToHome()" style="background: #d48fa6; border: none; color: white; padding: 10px 25px; border-radius: 25px; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                <i class="fas fa-home"></i> Home
+            </button>
+        </div>
+    </div>
+
+    
+    <audio id="letterMusic" loop>
+    <source src=".//SunKissed Lola - Pasilyo (Lyrics).mp3" type="audio/mpeg">
+</audio>
+    
+    <script>
+        let isPlaying = false;
+        const audio = document.getElementById('letterMusic');
+        const playIcon = document.getElementById('playIcon');
+        
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+            } else {
+                audio.play();
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        }
+        
+        function openYouTube() {
+            
+            window.open('https://www.youtube.com/watch?v=VhCnE53i1jc', '_blank');
+        }
+        
+        function goToSurprise() {
+            document.body.style.opacity = '0.7';
+            document.body.style.transition = 'opacity 0.3s';
+            setTimeout(() => {
+                window.location.href = 'surprise.html';
+            }, 300);
+        }
+        
+        function goToHome() {
+            document.body.style.opacity = '0.7';
+            document.body.style.transition = 'opacity 0.3s';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 300);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

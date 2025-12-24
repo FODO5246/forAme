@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Chance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="no-page">
+    <div class="container">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        
+        <div class="content">
+            <div class="promise-text">
+                <p>I promise you'll like it</p>
+                <p>I made it only for you</p>
+            </div>
+            
+            <h1 class="main-title">Another Chance</h1>
+            
+            <div class="no-message">
+                <div class="sad-face">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+                <p class="no-text">i promise you will like it.</p>
+                <p class="no-subtext">Read it please.</p>
+            </div>
+            
+            <div class="button-container">
+                <button class="choice-button yes-button" onclick="goToSurprise()">
+                    <i class="fas fa-redo"></i> Change My Mind
+                </button>
+                <button class="choice-button no-button" onclick="goToHome()">
+                    <i class="fas fa-home"></i> Back Home
+                </button>
+            </div>
+            
+            <div class="page-indicator">
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot active"></div>
+            </div>
+        </div>
+        
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+    </div>
+
+    <!-- Slow falling hearts for sad effect -->
+    <div class="floating-hearts slow-hearts"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

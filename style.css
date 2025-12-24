@@ -1,0 +1,1183 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff6b8b;
+    --primary-light: #ff9ebb;
+    --primary-dark: #e55a74;
+    --secondary: #6a5af9;
+    --accent: #4ecdc4;
+    --light: #fff5f7;
+    --dark: #2d3047;
+    --text: #444;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --radius: 20px;
+    --radius-sm: 10px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== BACKGROUND PATTERNS ===== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.homepage::before {
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 107, 139, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(106, 90, 249, 0.1) 0%, transparent 25%);
+}
+
+.surprise-page::before {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 107, 139, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 30%);
+}
+
+.flowers-page::before {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 107, 139, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.08) 0%, transparent 30%),
+        linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 252, 0.9) 100%);
+}
+
+.no-page::before {
+    background: 
+        radial-gradient(circle at 50% 30%, rgba(255, 107, 139, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 70%, rgba(150, 150, 150, 0.05) 0%, transparent 40%);
+}
+
+.memories-page::before {
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(255, 107, 139, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 70% 60%, rgba(106, 90, 249, 0.1) 0%, transparent 35%);
+}
+
+/* ===== CONTAINER STYLES ===== */
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius);
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: var(--shadow);
+    position: relative;
+    border: 1px solid rgba(255, 107, 139, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.wide-container {
+    max-width: 1000px;
+}
+
+/* ===== CORNER DECORATIONS ===== */
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-light);
+    opacity: 0.7;
+}
+
+.corner-tl {
+    top: 15px;
+    left: 15px;
+    border-top-left-radius: 12px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-tr {
+    top: 15px;
+    right: 15px;
+    border-top-right-radius: 12px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bl {
+    bottom: 15px;
+    left: 15px;
+    border-bottom-left-radius: 12px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-br {
+    bottom: 15px;
+    right: 15px;
+    border-bottom-right-radius: 12px;
+    border-left: none;
+    border-top: none;
+}
+
+/* ===== HOMEPAGE STYLES ===== */
+.promise-text {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.promise-text p {
+    font-size: 24px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 82px;
+    color: var(--primary);
+    text-align: center;
+    margin: 40px 0 70px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--primary-light), transparent);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+/* ===== NO PAGE STYLES ===== */
+.no-message {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.sad-face {
+    font-size: 60px;
+    color: var(--primary-light);
+    margin-bottom: 30px;
+    opacity: 0.7;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+.no-text {
+    font-size: 28px;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.no-subtext {
+    font-size: 20px;
+    color: var(--text-light);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* ===== BUTTON STYLES ===== */
+.choice-button,
+.response-button,
+.nav-button,
+.gift-select-btn,
+.modal-close-btn,
+.yt-button,
+.player-btn,
+.return-gift-btn,
+.back-to-gifts-btn {
+    padding: 16px 45px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    min-width: 160px;
+}
+
+.choice-button::before,
+.response-button::before,
+.nav-button::before,
+.return-gift-btn::before,
+.back-to-gifts-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.5s;
+}
+
+.choice-button:hover::before,
+.response-button:hover::before,
+.nav-button:hover::before,
+.return-gift-btn:hover::before,
+.back-to-gifts-btn:hover::before {
+    left: 100%;
+}
+
+.yes-button,
+.yes-response,
+.home-button,
+.gift-select-btn,
+.back-to-gifts-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(255, 107, 139, 0.3);
+}
+
+.yes-button:hover,
+.yes-response:hover,
+.home-button:hover,
+.gift-select-btn:hover,
+.back-to-gifts-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 107, 139, 0.4);
+}
+
+.no-button,
+.no-response,
+.back-button,
+.return-gift-btn {
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid #ddd;
+}
+
+.no-button:hover,
+.no-response:hover,
+.back-button:hover,
+.return-gift-btn:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-5px);
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* ===== SURPRISE PAGE STYLES ===== */
+.greeting {
+    font-size: 28px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.love-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 64px;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.message-box {
+    background-color: var(--light);
+    padding: 30px;
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 107, 139, 0.1);
+    box-shadow: var(--shadow-light);
+}
+
+.surprise-message {
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.question {
+    font-size: 24px;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.response-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.result-message {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: var(--radius-sm);
+    border: 2px dashed var(--primary-light);
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.result-message.show {
+    opacity: 1;
+}
+
+/* ===== PAGE NAVIGATION ===== */
+.page-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0 30px;
+    flex-wrap: wrap;
+}
+
+/* ===== PAGE INDICATOR ===== */
+.page-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: var(--transition);
+}
+
+.indicator-dot.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+/* ===== FLOWERS PAGE STYLES ===== */
+.flowers-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 107, 139, 0.2);
+}
+
+.flowers-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.flowers-subtitle {
+    font-size: 22px;
+    color: var(--text-light);
+    font-style: italic;
+    font-weight: 300;
+}
+
+.flower-bouquet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 50px 0;
+    flex-wrap: wrap;
+}
+
+.flower {
+    font-size: 60px;
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: var(--transition);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.flower:hover {
+    transform: scale(1.3) rotate(15deg);
+    filter: drop-shadow(0 10px 20px rgba(255, 107, 139, 0.3));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
+
+.flower-1 { animation-delay: 0s; }
+.flower-2 { animation-delay: 0.2s; }
+.flower-3 { animation-delay: 0.4s; }
+.flower-4 { animation-delay: 0.6s; }
+.flower-5 { animation-delay: 0.8s; }
+.flower-6 { animation-delay: 1s; }
+.flower-7 { animation-delay: 1.2s; }
+
+/* ===== LOVE MESSAGES GRID (Matching Image Layout) ===== */
+.love-messages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.message-card {
+    background-color: var(--light);
+    padding: 30px 25px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 107, 139, 0.1);
+    transition: var(--transition);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.1);
+    border-color: var(--primary-light);
+}
+
+.message-text {
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.twips-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-color: var(--primary);
+}
+
+.twips-text {
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Special Section for Return and I Love You */
+.special-section {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.05), rgba(255, 182, 193, 0.05));
+    padding: 30px;
+    border-radius: var(--radius-sm);
+    border: 2px dashed var(--primary-light);
+    margin: 20px 0;
+}
+
+.return-button-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.return-gift-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    min-width: 120px;
+}
+
+.love-you-card {
+    flex: 2;
+    text-align: center;
+}
+
+.heart-icon {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.love-you-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Wide message card for the longer message */
+.wide-message-card {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.wide-message-card .message-text {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+/* Poetic message cards */
+.poetic-message-card {
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.08), rgba(255, 182, 193, 0.08));
+    padding: 35px 25px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 107, 139, 0.15);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    transition: var(--transition);
+}
+
+.poetic-message-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.15);
+    border-color: var(--primary-light);
+}
+
+.poetic-text {
+    font-size: 20px;
+    color: var(--text);
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* ===== MEMORIES PAGE STYLES ===== */
+.memories-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 107, 139, 0.2);
+}
+
+.memories-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: var(--primary);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.anniversary-section {
+    background-color: var(--light);
+    padding: 40px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 107, 139, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.anniversary-title {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.anniversary-card-main {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.1), rgba(255, 182, 193, 0.1));
+    padding: 30px;
+    border-radius: var(--radius-sm);
+    border: 2px solid rgba(255, 107, 139, 0.2);
+}
+
+.anniversary-icon {
+    font-size: 60px;
+    color: var(--primary);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.anniversary-content {
+    flex: 1;
+}
+
+.anniversary-content h3 {
+    font-size: 32px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.anniversary-content p {
+    font-size: 18px;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 60px 0;
+}
+
+.memory-card {
+    background-color: var(--white);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid rgba(255, 107, 139, 0.1);
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 107, 139, 0.15);
+    border-color: var(--primary-light);
+}
+
+.memory-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.memory-1 {
+    background: linear-gradient(135deg, #ffb6c1, #ff9ebb);
+}
+
+.memory-2 {
+    background: linear-gradient(135deg, #ffd6e0, #ffc2d1);
+}
+
+.memory-3 {
+    background: linear-gradient(135deg, #ffe6ee, #ffd6e0);
+}
+
+.memory-4 {
+    background: linear-gradient(135deg, #fff0f5, #ffe6ee);
+}
+
+.memory-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.memory-overlay i {
+    font-size: 60px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.memory-overlay p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.memory-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.memory-info h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.memory-info p {
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.memory-quote {
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.1), rgba(78, 205, 196, 0.1));
+    padding: 50px 40px;
+    border-radius: var(--radius);
+    text-align: center;
+    margin: 60px 0;
+    border: 2px dashed var(--primary-light);
+    position: relative;
+}
+
+.quote-icon-left,
+.quote-icon-right {
+    font-size: 40px;
+    color: var(--primary);
+    opacity: 0.5;
+    position: absolute;
+}
+
+.quote-icon-left {
+    top: 20px;
+    left: 20px;
+}
+
+.quote-icon-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.quote-text {
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.8;
+    font-style: italic;
+    margin: 0;
+}
+
+.back-to-gifts-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.back-to-gifts-btn {
+    padding: 18px 50px;
+    font-size: 20px;
+    min-width: 300px;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, var(--light), var(--white));
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.5s ease;
+    border: 1px solid rgba(255, 107, 139, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 25px 30px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-modal {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.gift-message {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 107, 139, 0.1);
+}
+
+.gift-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.gift-text {
+    font-size: 22px;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.gift-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.gift-option {
+    background-color: var(--light);
+    padding: 30px 20px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.gift-option:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-light);
+    box-shadow: 0 15px 30px rgba(255, 107, 139, 0.15);
+}
+
+.gift-icon {
+    font-size: 48px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-option h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.gift-option p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.modal-close-btn {
+    background: #f8f8f8;
+    color: var(--text-light);
+    border: 2px solid #ddd;
+    padding: 15px 40px;
+}
+
+.modal-close-btn:hover {
+    background-color: #eee;
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* ===== ANIMATIONS ===== */
+.floating-hearts,
+.flower-petals,
+.memory-sparkles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart,
+.petal,
+.sparkle {
+    position: absolute;
+    font-size: 20px;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.heart {
+    color: rgba(255, 107, 139, 0.7);
+    animation-name: floatUp;
+}
+
+.petal {
+    color: rgba(255, 107, 139, 0.5);
+    animation-name: floatDown;
+}
+
+.sparkle {
+    color: rgba(255, 215, 0, 0.7);
+    animation-name: sparkleFloat;
+}
+
+.slow-hearts .heart {
+    animation-duration: 8s;
+    opacity: 0.4;
+}
+
+.extra-hearts .heart {
+    animation-duration: 4s;
+    font-size: 24px;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+    
+    .main-title {
+        font-size: 60px;
+        margin: 30px 0 50px;
+    }
+    
+    .love-title {
+        font-size: 48px;
+    }
+    
+    .flowers-title,
+    .memories-title {
+        font-size: 36px;
+    }
+    
+    .love-messages-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .special-section {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .return-button-section {
+        justify-content: center;
+    }
+    
+    .wide-message-card,
+    .poetic-message-card {
+        grid-column: 1;
+    }
+    
+    .gift-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .anniversary-card-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .button-container,
+    .response-container,
+    .page-navigation,
+    .navigation-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .choice-button,
+    .response-button,
+    .nav-button,
+    .back-to-gifts-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .flower {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 48px;
+    }
+    
+    .promise-text p {
+        font-size: 20px;
+    }
+    
+    .love-title {
+        font-size: 40px;
+    }
+    
+    .flowers-title,
+    .memories-title {
+        font-size: 32px;
+    }
+    
+    .love-you-text {
+        font-size: 24px;
+    }
+    
+    .message-text {
+        font-size: 16px;
+    }
+    
+    .twips-text {
+        font-size: 24px;
+    }
+    
+    .back-to-gifts-btn {
+        min-width: 100%;
+        padding: 15px 20px;
+    }
+
+    /* Add to style.css */
+.home-message {
+    text-align: center;
+    margin: 40px 0 60px;
+}
+
+.home-message p {
+    font-size: 24px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+}

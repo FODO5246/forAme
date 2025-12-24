@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello My Love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Top right home button */
+        .top-home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(255, 107, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .top-home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 107, 139, 0.4);
+        }
+        
+        /* Hide the original navigation container */
+        .page-navigation {
+            display: none;
+        }
+    </style>
+</head>
+<body class="surprise-page">
+    <!-- Top right home button -->
+    <button class="top-home-button" onclick="goToHome()">
+        <i class="fas fa-home"></i> Home
+    </button>
+    
+    <div class="container">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        
+        <div class="content">
+            <h2 class="greeting">Hello</h2>
+            <h1 class="love-title">My Love</h1>
+            
+            <div class="message-box">
+                <p class="surprise-message">I made you a surprise, my love</p>
+                <p class="question">Would you like to see it?</p>
+            </div>
+            
+            <div class="response-container">
+                <button class="response-button yes-response" onclick="showGiftModal()">
+                    <i class="fas fa-heart"></i> Yes Baby
+                </button>
+                <button class="response-button no-response" onclick="goToNoPage()">
+                    <i class="fas fa-times"></i> no
+                </button>
+            </div>
+            
+            <div class="result-message" id="resultMessage"></div>
+            
+            <!-- Removed the original page-navigation div -->
+            
+            <div class="page-indicator">
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot active"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+            </div>
+        </div>
+        
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+    </div>
+
+    <!-- Gift Selection Modal -->
+    <div class="modal-overlay" id="giftModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-gift"></i> Choose Your Surprise</h3>
+                <button class="close-modal" onclick="closeGiftModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="gift-message">
+                    <h2 class="gift-title">THESE ARE FOR YOU</h2>
+                    <p class="gift-text">I hope you like it, I love you</p>
+                </div>
+                
+                <div class="gift-options">
+                    <div class="gift-option" onclick="goToFlowers()">
+                        <div class="gift-icon"><i class="fas fa-spa"></i></div>
+                        <h3>Virtual Flowers</h3>
+                        <p>A beautiful bouquet of love messages</p>
+                        <button class="gift-select-btn">
+                            <i class="fas fa-eye"></i> View Flowers
+                        </button>
+                    </div>
+                    
+                    <div class="gift-option" onclick="goToLetter()">
+                        <div class="gift-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>Love Letter</h3>
+                        <p>Heartfelt words from me to you</p>
+                        <button class="gift-select-btn">
+                            <i class="fas fa-envelope-open"></i> Read Letter
+                        </button>
+                    </div>
+                    
+                    <div class="gift-option" onclick="goToMemories()">
+                        <div class="gift-icon"><i class="fas fa-images"></i></div>
+                        <h3>Memory Album</h3>
+                        <p>Our beautiful moments together</p>
+                        <button class="gift-select-btn">
+                            <i class="fas fa-photo-video"></i> View Memories
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="modal-close-btn" onclick="closeGiftModal()">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-hearts"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
